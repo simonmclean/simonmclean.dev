@@ -12,6 +12,6 @@ Built with the following goals and principles
 - Statically served
 - Highly performant
 
-In future I intend to take the [CSS Zen Garden](http://www.csszengarden.com/) approach of having hot-swappable style sheets,
+In future I intend to take the [CSS Zen Garden](http://www.csszengarden.com/) approach of having hot-swappable stylesheets,
 so as to allow theming, without changing any markup or JavaScript. The idea is to build a future-proof site, based on web standards,
 such that only the CSS changes when I implment a new design.
