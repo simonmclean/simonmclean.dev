@@ -2,18 +2,19 @@
 const VUE = 'Vue';
 const VUEX = 'Vuex';
 const REACT = 'React';
+const NEXT = 'Next.js';
 const RXJS = 'RxJS';
-const WORKBOX = 'Workbox';
 const LOCAL_FORAGE = 'localForage';
 const TYPESCRIPT = 'TypeScript';
 const THREEJS = 'Three.js';
+const RAMDA = 'Ramda';
 
 const PROJECTS = Object.freeze([
     {
         title: 'Just News',
         link: 'https://github.com/simonmclean/just-news',
         text: [`My first adventure with progressive web apps, recently rebuilt using React. This app uses <a href="https://newsapi.org">News API</a> to serve up the latest headlines from a variety of sources. As you'd expect from a PWA, it has add-to-homescreen and offline support.`],
-        builtWith: [REACT, WORKBOX, LOCAL_FORAGE],
+        builtWith: [REACT, NEXT, RAMDA, LOCAL_FORAGE],
     },
     {
         title: 'Model of the Solar System',
