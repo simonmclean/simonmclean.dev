@@ -8,6 +8,7 @@ const LOCAL_FORAGE = 'localForage';
 const TYPESCRIPT = 'TypeScript';
 const THREEJS = 'Three.js';
 const RAMDA = 'Ramda';
+const LIT_ELEMENT = 'LitElement';
 
 const PROJECTS = Object.freeze([
     {
@@ -21,6 +22,12 @@ const PROJECTS = Object.freeze([
         link: 'https://solarjs.netlify.com/',
         text: [`I'd always wanted to try my hand at some 3D rendering, and (roughly) modeling the solar system seemed like a fun place to start. Much of this "simulation" is based on real data. For example the relative sizes, tilts and orbital speeds of planets are all fairly accurate.`],
         builtWith: [THREEJS, VUE, VUEX, TYPESCRIPT],
+    },
+    {
+        title: 'Web Components',
+        link: 'https://github.com/simonmclean?tab=repositories&q=web+component&type=&language=',
+        text: [`Toggle switches and lazy loading images are not something we should have to code over and over again. So to that end I've created some standards based Web Components that I can reuse in any future projects.`],
+        builtWith: [LIT_ELEMENT],
     },
 ]);
 
