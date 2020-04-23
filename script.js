@@ -8,7 +8,7 @@ const THREEJS = 'Three.js';
 const RAMDA = 'Ramda';
 const LIT_ELEMENT = 'LitElement';
 
-const PROJECTS = Object.freeze([
+const PROJECTS = [
     {
         title: 'Just News',
         link: 'https://github.com/simonmclean/just-news',
@@ -27,13 +27,23 @@ const PROJECTS = Object.freeze([
         text: [`Toggle switches and lazy loading images are not something we should have to code over and over again. So to that end I've created some standards based Web Components that I can reuse in any future projects.`],
         builtWith: [LIT_ELEMENT],
     },
-]);
+];
+
+const SELECTORS = {
+    PROJECTS_LIST: '#projects-list',
+    PROJECT_TEMPLATE: {
+        ROOT: '#project-item',
+        TITLE_LINK: '.project-title-link',
+        DESCRIPTION: '.project-description',
+        BUILT_WITH_LIST: '.project-built-with-list',
+    }
+};
 
 const $ = root => selector => root.querySelector(selector);
 
 const cloneNode = node => node.content.cloneNode(true);
 
-function itemsToDOM(items, tagName) {
+function itemsToDocFragment(items, tagName) {
     const fragment = new DocumentFragment();
     items.forEach(itemText => {
         const el = document.createElement(tagName);
@@ -45,16 +55,21 @@ function itemsToDOM(items, tagName) {
 
 function projectReducer(template) {
     return (fragment, project) => {
+        const {
+            TITLE_LINK,
+            DESCRIPTION,
+            BUILT_WITH_LIST
+        } = SELECTORS.PROJECT_TEMPLATE;
         const templateClone = cloneNode(template);
-        const find = $(templateClone);
-        const titleEl = find('.project-title-link');
+        const qs = $(templateClone);
+        const titleEl = qs(TITLE_LINK);
         titleEl.setAttribute('href', project.link);
         titleEl.textContent = project.title;
-        find('.project-description').appendChild(
-            itemsToDOM(project.text, 'p')
+        qs(DESCRIPTION).appendChild(
+            itemsToDocFragment(project.text, 'p')
         );
-        find('.project-built-with-list').appendChild(
-            itemsToDOM(project.builtWith, 'li')
+        qs(BUILT_WITH_LIST).appendChild(
+            itemsToDocFragment(project.builtWith, 'li')
         );
         fragment.appendChild(templateClone);
         return fragment;
@@ -62,10 +77,10 @@ function projectReducer(template) {
 }
 
 function insertProjects() {
-    const find = $(document);
-    const template = find('#project-item');
+    const qs = $(document);
+    const template = qs(SELECTORS.PROJECT_TEMPLATE.ROOT);
 
-    find('#projects-list').appendChild(
+    qs(SELECTORS.PROJECTS_LIST).appendChild(
         PROJECTS.reduce(
             projectReducer(template),
             new DocumentFragment()
@@ -73,13 +88,10 @@ function insertProjects() {
     );
 }
 
-function init() {
-    console.info('Want to see the source code?', 'https://github.com/simonmclean/simonmclean.dev');
+if (['complete', 'interactive'].includes(document.readyState)) {
     insertProjects();
+} else {
+    window.addEventListener('DOMContentLoaded', insertProjects);
 }
 
-if (['complete', 'interactive'].includes(document.readyState)) {
-    init();
-} else {
-    window.addEventListener('DOMContentLoaded', init);
-}
+console.info('Want to see the source code?', 'https://github.com/simonmclean/simonmclean.dev');
