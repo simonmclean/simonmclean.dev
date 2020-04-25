@@ -39,9 +39,13 @@ const SELECTORS = {
     }
 };
 
-const $ = root => selector => root.querySelector(selector);
+function $(root) {
+    return selector => root.querySelector(selector);
+}
 
-const cloneNode = node => node.content.cloneNode(true);
+function cloneNode(node) {
+    return node.content.cloneNode(true);
+}
 
 function itemsToDocFragment(items, tagName) {
     const fragment = new DocumentFragment();
