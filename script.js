@@ -57,7 +57,7 @@ function textListToDocumentFragment(list, tagName) {
     return fragment;
 }
 
-function projectReducer(template) {
+function projectReducerFactory(template) {
     return (fragment, project) => {
         const {
             TITLE_LINK,
@@ -93,7 +93,7 @@ function insertProjects() {
 
     qs(SELECTORS.PROJECTS_LIST).appendChild(
         PROJECTS.reduce(
-            projectReducer(template),
+            projectReducerFactory(template),
             new DocumentFragment()
         )
     );
