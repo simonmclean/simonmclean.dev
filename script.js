@@ -47,11 +47,11 @@ function cloneNode(node) {
     return node.content.cloneNode(true);
 }
 
-function itemsToDocFragment(items, tagName) {
+function textListToDocumentFragment(list, tagName) {
     const fragment = new DocumentFragment();
-    items.forEach(itemText => {
+    list.forEach(str => {
         const el = document.createElement(tagName);
-        el.innerHTML = itemText;
+        el.innerHTML = str;
         fragment.appendChild(el);
     });
     return fragment;
@@ -66,15 +66,22 @@ function projectReducer(template) {
         } = SELECTORS.PROJECT_TEMPLATE;
         const templateClone = cloneNode(template);
         const qs = $(templateClone);
+
+        // Title
         const titleEl = qs(TITLE_LINK);
         titleEl.setAttribute('href', project.link);
         titleEl.textContent = project.title;
+
+        // Description
         qs(DESCRIPTION).appendChild(
-            itemsToDocFragment(project.text, 'p')
+            textListToDocumentFragment(project.text, 'p')
         );
+
+        // Built with
         qs(BUILT_WITH_LIST).appendChild(
-            itemsToDocFragment(project.builtWith, 'li')
+            textListToDocumentFragment(project.builtWith, 'li')
         );
+
         fragment.appendChild(templateClone);
         return fragment;
     }
