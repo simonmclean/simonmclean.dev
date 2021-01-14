@@ -38,7 +38,7 @@ function htmlMap(fn, list, del = "") {
   return list.map(fn).join(del);
 }
 
-function projectsToHtml({ title, link, text, builtWith }) {
+function projectToHtml({ title, link, text, builtWith }) {
   return `
   <li>
       <article>
@@ -67,7 +67,7 @@ function projectsToHtml({ title, link, text, builtWith }) {
 
 function insertProjects() {
   document.getElementById("projects-list").innerHTML = htmlMap(
-    projectsToHtml,
+    projectToHtml,
     PROJECTS
   );
 }
