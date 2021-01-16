@@ -1,5 +1,13 @@
 const PROJECTS = [
   {
+    title: "tryptic.nvim",
+    link: "https://github.com/simonmclean/tryptic.nvim",
+    text: [
+      "Directory viewer for Neovim, based on a visualisation technique known as <a href='https://en.wikipedia.org/wiki/Miller_columns'>Miller columns</a>."
+    ],
+    builtWith: ["Vimscript"]
+  },
+  {
     title: "FretFu - Fretboard Diagram Generator",
     link: "https://fretfu.netlify.app",
     text: [
