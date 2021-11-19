@@ -3,15 +3,4 @@
 
 [simonmclean.dev](https://simonmclean.dev)
 
-Built with the following goals and principles
-
-- Clean, semantic HTML
-- CSS grid for layout
-- Minimal in design
-- Easy to maintain
-- Statically served
-- Highly performant
-
-In future I intend to take the [CSS Zen Garden](http://www.csszengarden.com/) approach of having hot-swappable stylesheets,
-so as to allow theming, without the need to change any markup or JavaScript. The idea is to build a future-proof site, based on web standards,
-such that only the CSS changes when I implement a new design.
+Simples
